@@ -195,6 +195,7 @@ class TestServer(BaseHTTPRequestHandler):
     /content/<num> returns 200 with <num> bytes of content
     /sleep/<num> waits <num> seconds before it returns a 200 response
     """
+
     def log_message(self, *args):
         pass  # BaseHTTPRequestHandler spams to stderr
 
@@ -223,5 +224,3 @@ class TestServer(BaseHTTPRequestHandler):
 
     def sleep_handler(self, sleep_seconds: str, *ignored):
         time.sleep(int(sleep_seconds))
-
-

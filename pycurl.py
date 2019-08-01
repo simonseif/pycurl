@@ -18,7 +18,7 @@ from urllib3.exceptions import HTTPError
 
 def download(url: str, stream: io.IOBase, timeout: int, verify: bool):
     """
-    downloads the content of URL into stream.
+    Downloads the content of URL into stream.
     This method only supports HTTP and HTTPS URLs.
     The implementation is safe to use for large contents.
     :param url: URL to download.
@@ -28,13 +28,13 @@ def download(url: str, stream: io.IOBase, timeout: int, verify: bool):
     """
     with requests.get(url, timeout=timeout, verify=verify, stream=True) as r:
         r.raise_for_status()
-        for chunk in r.iter_content(chunk_size=1024*1024):
+        for chunk in r.iter_content(chunk_size=1024 * 1024):
             stream.write(chunk)
 
 
 def download_all(urls: Iterable[str], download_directory: str, downloader: Callable[[str, str], None]):
     """
-    downloads all URLs to download_directory.
+    Downloads all URLs to download_directory.
     A URL that has been downloaded successfully will not be downloaded again.
     This method will continue if the download of a single URL fails for whatever reason.
     :param urls: URLs to download.
@@ -102,7 +102,7 @@ def read_urls(s: Iterable[str]) -> Iterable[str]:
         if _is_valid_url(stripped_line):
             yield stripped_line
         else:
-            logging.error(f"line {i+1} is not a valid URL: '{stripped_line}'")
+            logging.error(f"line {i + 1} is not a valid URL: '{stripped_line}'")
 
 
 def _is_valid_url(s: str) -> bool:

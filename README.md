@@ -46,7 +46,7 @@ optional arguments:
 - HTTP's persistent connection feature is not used
 - limited to HTTP and HTTPS
 - sigterm is not handled properly
-- logging might get messy if --verbose flag is passed (requests lib logs excessively)
+- logging might get messy if `--verbose` flag is passed (requests lib logs excessively)
 - proxy support is untested
 - unittest are not completely silent
 - duplicate URL detection is based on posix file system feature. See http://man7.org/linux/man-pages/man2/open.2.html O_EXCL for
