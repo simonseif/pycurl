@@ -89,7 +89,7 @@ def _dispatch(jobs: Iterable[T], consumer: Callable[[T], None], num_threads: int
     [w.join() for w in workers]
 
 
-def read_urls(s: Iterable[str]) -> Iterable[str]:
+def _read_urls(s: Iterable[str]) -> Iterable[str]:
     """
     Filters an iterator of strings for valid URLs.
     :param s: iterator of strings.
@@ -157,7 +157,7 @@ if __name__ == '__main__':
         urllib3.disable_warnings()
     verify_ssl = not args.insecure
 
-    url_reader = read_urls(open(args.urls))
+    url_reader = _read_urls(open(args.urls))
 
     downloader = partial(download, timeout=args.timeout, verify=verify_ssl)
     worker = partial(download_all, download_directory=args.download_dir, downloader=downloader)
