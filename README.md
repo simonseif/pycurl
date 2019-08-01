@@ -45,9 +45,12 @@ optional arguments:
 - no support for transmission timeout (time for an entire download)
 - HTTP's persistent connection feature is not used
 - limited to HTTP and HTTPS
-- sigterm is not handled properly
+- SIGTERM is not handled properly
 - logging might get messy if `--verbose` flag is passed (requests lib logs excessively)
 - proxy support is untested
-- unittest are not completely silent
+- unit tests are not completely silent
+- unit tests for insecure https connections rely on external resources (badssl.com).
+- unit tests trigger a `ResourceWarning: unclosed <socket.socket>` caused by the requests library.
+  See https://github.com/psf/requests/issues/1882#issuecomment-52282635
 - duplicate URL detection is based on posix file system feature. See http://man7.org/linux/man-pages/man2/open.2.html O_EXCL for
   limitations. Unclear if this works reliably on Windows.
