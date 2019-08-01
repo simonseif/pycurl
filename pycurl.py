@@ -62,10 +62,10 @@ def download_all(urls: Iterable[str], download_directory: str, downloader: Calla
             os.remove(dst)
 
 
-T = TypeVar('T')
+_T = TypeVar('T')
 
 
-def _dispatch(jobs: Iterable[T], consumer: Callable[[T], None], num_threads: int) -> None:
+def _dispatch(jobs: Iterable[_T], consumer: Callable[[_T], None], num_threads: int) -> None:
     """
     Dispatches items from a job queue to instances of a consumer.
     Each consumer is run in its own thread.
